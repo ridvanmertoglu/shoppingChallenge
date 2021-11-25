@@ -1,19 +1,29 @@
-import './App.scss';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import {  useDispatch } from 'react-redux';
 import { itemsActions } from './redux/actions';
+import { itemService } from './services'
+import { HomePage } from './pages';
 
 const App = () => {
 
   const dispatch = useDispatch();
 
-  const addItem = () => {
-    dispatch(itemsActions.setItems(["item"]))
+  const fetchItems = async () => {
+    try {
+      const { data } = await itemService.getItems();
+      dispatch(itemsActions.setItems(data));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
+  useEffect(() => {
+    fetchItems();
+  }, [])
+
   return (
-    <div className="App">
-      <button onClick={addItem}>click</button>
-    </div>
+    <HomePage />
   );
 }
 
