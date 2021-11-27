@@ -1,0 +1,49 @@
+.container {
+    height: 76px;
+    width: 100%;
+    background: #1EA4CE;
+  
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 80px !important;
+    margin-left: 80px !important;
+}
+
+
+.logo {
+    width: 141px;
+    height: 40px;
+}
+
+.basket {
+    width: 24px;
+    height: 24px;
+}
+
+.basketCol {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+}
+
+.basketContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #147594;
+    height: 76px;
+    width: 129px;
+}
+
+.basketPriceText {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 5px;
+    color: white;
+}
