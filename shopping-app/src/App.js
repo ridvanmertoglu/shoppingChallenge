@@ -2,8 +2,10 @@
 import React, { useEffect } from 'react';
 import {  useDispatch } from 'react-redux';
 import { itemsActions } from './redux/actions';
-import { itemService } from './services'
+import { itemService } from './services';
+import { DefaultLayout } from './layouts';
 import { HomePage } from './pages';
+
 
 const App = () => {
 
@@ -23,7 +25,10 @@ const App = () => {
   }, [])
 
   return (
-    <HomePage />
+    <DefaultLayout>
+       <HomePage />
+    </DefaultLayout>
+   
   );
 }
 
