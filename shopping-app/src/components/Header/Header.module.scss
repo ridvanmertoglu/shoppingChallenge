@@ -1,3 +1,5 @@
+@import '../../assets/styles.scss';
+
 .container {
     height: 76px;
     width: 100%;
@@ -5,9 +7,7 @@
 }
 
 .row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexBox(center,center);
     margin-right: 80px !important;
     margin-left: 80px !important;
 }
@@ -23,16 +23,12 @@
 }
 
 .basketCol {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    @include flexBox(flex-end,center);
     padding: 0px;
 }
 
 .basketContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexBox(center,center);
     background-color: #147594;
     height: 76px;
     width: 129px;

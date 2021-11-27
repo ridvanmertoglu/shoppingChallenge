@@ -1,0 +1,47 @@
+.container {
+    margin: 15px;
+    max-width: 124px;
+    flex-direction: column;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 124px;
+    height: 124px;
+    border: 1px solid #F3F0FE;
+    border-radius: 12px;
+}
+
+.image {
+    width: 92px;
+    height: 92px;
+    background-color: #C4C4C4;
+}
+
+.price {
+    margin: 0px;
+    padding: 5px;
+    font-size: 14px;
+    color: #1EA4CE;
+    font-weight: 700;
+}
+
+.name {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.addButton {
+    width: 100%;
+    background-color: #1EA4CE;
+    color: white;
+    margin-top: 10px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+    
+}
