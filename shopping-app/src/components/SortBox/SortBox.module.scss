@@ -1,0 +1,50 @@
+.container {
+    margin-bottom: 20px;
+}
+
+.titleText {
+  color: #697488;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+}
+
+@mixin sortBoxContent{
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 30px;
+}
+
+.sortBoxContentWithSearch {
+    @include sortBoxContent();
+    min-height: 244px;
+}
+
+.sortBoxContentWithoutSearch {
+    @include sortBoxContent();
+    min-height: 184px;
+}
+    
+.searchInput {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.checkbox {
+    margin-top: 5px;
+}
+
+.checkboxText {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #525252;
+    font-weight: 400;  
+}
+
+

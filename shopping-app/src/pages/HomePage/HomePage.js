@@ -1,10 +1,21 @@
-import React from 'react';
+import React  from 'react';
 import styles from './HomePage.module.scss';
+import { SortBox } from '../../components';
+import {Row,Col} from 'react-bootstrap'
+
 
 const HomePage = () => {
+
     return (
       <div className={styles.container}>
-       <p>Shopping App</p>
+      <Row>
+      <Col md={3} >
+      <SortBox title="Sorting"/>
+      <SortBox title="Brands" searchable/>
+      <SortBox title="Tags" searchable/>
+      
+      </Col>
+      </Row>
       </div>
     );
   }
