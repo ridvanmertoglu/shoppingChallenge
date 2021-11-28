@@ -9,13 +9,18 @@
   margin-bottom: 5px;
 }
 
-.sortBoxContent {
+.filterBoxContent{
     width: 100%;
     background-color: #FFFFFF;
     padding: 30px;
-    min-height: 184px;
+    height: 244px;
+    overflow: auto;
 }
-    
+
+.searchInput {
+    margin-bottom: 10px;
+    width: 100%;
+}
 
 .checkboxContainer {
     display: flex;

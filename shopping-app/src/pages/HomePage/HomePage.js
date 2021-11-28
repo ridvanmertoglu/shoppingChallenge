@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect}  from 'react';
 import styles from './HomePage.module.scss';
-import { SortBox, Product, Basket } from '../../components';
+import { SortBox, FilterBox, Product, Basket } from '../../components';
 import {Row,Col} from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
@@ -13,22 +13,38 @@ const HomePage = () => {
 
   const dispatch = useDispatch();
 
-  let defaultItems = Object.values(useSelector((state) => state.itemsReducer.items))
-  const basketContent = useSelector((state) => state.basketReducer.products)
-  const basketTotalPrice = useSelector((state) => state.basketReducer.totalPrice)
-
+  let defaultItems = Object.values(useSelector((state) => state.itemsReducer.items));
+  let defaultCompanies = Object.values(useSelector((state) => state.companiesReducer.companies));
+  const basketContent = useSelector((state) => state.basketReducer.products);
+  const basketTotalPrice = useSelector((state) => state.basketReducer.totalPrice);
+  
   const [alreadySet, setAlreadySet] = useState(false);
   const [items, setItems] = useState();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [activeTab, setActiveTab] = useState("mug");
+  const [sortCounter, setSortCounter] = useState(0);
+  const [itemTags, setItemTags] = useState([]);
+
+
 
   useEffect(() => {
     if (defaultItems && defaultItems.length > 0 && !alreadySet) {
-      setItems(defaultItems.filter((item) => item.itemType === "mug"))
+      setItems(defaultItems.filter((item) => item.itemType === "mug"));
       setAlreadySet(true);
     }
+
+    const tags = [];
+    defaultItems.forEach((item) => {
+      item.tags.forEach((tag) => {
+        if (!tags.includes(tag)) {
+          tags.push(tag);
+        }
+      })
+    })
+    setItemTags(tags);
+
   }, [defaultItems])
   
 
@@ -38,7 +54,7 @@ const HomePage = () => {
       setCurrentItems(items.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(items.length / 16));
     }
-  }, [itemOffset,items]);
+  }, [itemOffset,items,sortCounter]);
 
   const handleOnclickMug = () => {
     setActiveTab("mug");
@@ -78,8 +94,6 @@ const HomePage = () => {
     dispatch(basketActions.setTotalPrice(newTotalPrice));
   }
 
-  
-
   const Items = ({ currentItems }) => {
     return (
       <>
@@ -95,13 +109,34 @@ const HomePage = () => {
     );
   }
 
+  const handleOnClickSort = (sortId) => {
+    if (sortId === '1') {
+      items.sort((item1,item2) => item1.price > item2.price ? 1 : item2.price > item1.price ? -1 : 0); 
+    } else if (sortId === '2') {
+      items.sort((item1,item2) => item1.price < item2.price ? 1 : item2.price < item1.price ? -1 : 0); 
+    } else if (sortId === '3') {
+      items.sort((item1,item2) => item1.added < item2.added ? 1 : item2.added < item1.added ? -1 : 0); 
+    } else if (sortId === '4') {
+      items.sort((item1,item2) => item1.added > item2.added ? 1 : item2.added > item1.added ? -1 : 0); 
+    }
+    setSortCounter(sortCounter + 1);
+  }
+
+  const handleOnclickFilter = (filterName) => {
+    setItems(defaultItems.filter((item) => item.manufacturer === filterName))
+  }
+
+  const handleOnclickTagFilter = (filterName) => {
+    setItems(defaultItems.filter((item) => item.tags.includes(filterName)))
+  }
+
     return (
       <div className={styles.container}>
       <Row>
       <Col md={3} >
-      <SortBox title="Sorting"/>
-      <SortBox title="Brands" searchable/>
-      <SortBox title="Tags" searchable/>
+      <SortBox title="Sorting" handleClickSort={handleOnClickSort}/>
+      <FilterBox title="Brands" handleClickSort={handleOnclickFilter} defaultData={defaultCompanies}/>
+      <FilterBox title="Tags" handleClickSort={handleOnclickTagFilter} defaultData={itemTags} tagFilter/>
       </Col>
       <Col md={6}>
       <Row>

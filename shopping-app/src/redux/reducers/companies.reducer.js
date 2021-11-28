@@ -3,7 +3,7 @@ import {
 } from '../redux-types';
 
 export const companiesDefaultState = {
-companies: []
+    companies: []
 }
 
 export const companiesReducer = (state = companiesDefaultState, action) => {
@@ -11,7 +11,7 @@ export const companiesReducer = (state = companiesDefaultState, action) => {
         case SET_COMPANIES:
             return {
                 ...state,
-                items: {
+                companies: {
                   ...action.payload,
                 }
             };

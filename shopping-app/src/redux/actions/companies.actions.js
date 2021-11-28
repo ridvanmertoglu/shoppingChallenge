@@ -2,9 +2,9 @@ import {
     SET_COMPANIES
 } from '../redux-types';
 
-export const setCompanies = (items) => {
+export const setCompanies = (companies) => {
     return {
       type: SET_COMPANIES,
-      payload: items,
+      payload: companies,
     };
   };
