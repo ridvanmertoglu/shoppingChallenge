@@ -1,3 +1,5 @@
+@import '../../assets/styles.scss';
+
 .container {
     margin: 15px;
     max-width: 124px;
@@ -5,9 +7,7 @@
 }
 
 .imageContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexBox(center,center);
     width: 124px;
     height: 124px;
     border: 1px solid #F3F0FE;

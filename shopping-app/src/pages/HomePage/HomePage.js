@@ -1,6 +1,6 @@
 import React  from 'react';
 import styles from './HomePage.module.scss';
-import { SortBox, Product } from '../../components';
+import { SortBox, Product, Basket } from '../../components';
 import {Row,Col} from 'react-bootstrap'
 
 
@@ -65,8 +65,9 @@ const HomePage = () => {
           price={10.99}/>
         </Col>
       </Row>
-      
-     
+      </Col>
+      <Col md={3}>
+        <Basket />
       </Col>
       </Row>
       </div>

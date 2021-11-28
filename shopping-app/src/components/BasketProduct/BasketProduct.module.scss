@@ -1,0 +1,66 @@
+@import '../../assets/styles.scss';
+
+.productInBasket {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    border-bottom: 1px solid #F4F4F4;
+}
+
+.productName {
+    color: #191919;
+    font-size: 14px;
+    font-weight: 400px;
+    margin-bottom: 2px;
+}
+
+.productPrice {
+    color: #1EA4CE;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.productNumberContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.counterButton {
+    @include flexBox(center,center);
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: none;
+    width: 10px;
+    height: 10px;
+    
+}
+
+.increase {
+    margin-top: 15px;
+    width: 10px;
+    height: 10px;
+}
+
+.countContainer {
+    @include flexBox(center,center);
+    width: 32px !important;
+    height: 32px;
+    background-color: #1EA4CE;
+  
+
+}
+
+.count {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0px !important;
+}
+
+.decrease {
+    margin-top: 15px;
+    width: 10px;
+    height: 2px;
+}
