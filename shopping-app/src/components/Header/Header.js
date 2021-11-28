@@ -2,9 +2,13 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { LOGO,BASKET } from '../../assets'
 import {Row,Col} from 'react-bootstrap'
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+
+  const basketTotalPrice = useSelector((state) => state.basketReducer.totalPrice)
+
     return (
      <div className={styles.container}>
       <Row className={styles.row}>
@@ -23,7 +27,7 @@ const Header = () => {
             alt="basket"
             className={styles.basket}
             />
-            <p className={styles.basketPriceText}>₺ 499.98</p>
+            <p className={styles.basketPriceText}>₺ {basketTotalPrice.toFixed(2)}</p>
         </div>
       </Col>
       </Row>

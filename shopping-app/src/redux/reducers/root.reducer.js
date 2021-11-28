@@ -3,12 +3,14 @@ import { combineReducers } from 'redux';
 import {
   itemsReducer,
   companiesReducer,
+  basketReducer
 } from './';
 
 
 const appReducer = combineReducers({
   itemsReducer,
   companiesReducer,
+  basketReducer,
 });
 
 

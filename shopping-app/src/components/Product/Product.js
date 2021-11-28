@@ -1,12 +1,7 @@
 import React from 'react';
 import styles from './Product.module.scss';
 
-const Product = ({price,name}) => {
-
-    const handleOnclickAdd = () => {
-        console.log("Add");
-    }
-
+const Product = ({price,name, handleOnclickAdd}) => {
     return (
      <div className={styles.container}>
         <div className={styles.imageContainer}>

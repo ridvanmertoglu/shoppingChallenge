@@ -1,8 +1,28 @@
+@import '../../assets/styles.scss';
 .container {
     height: 338px;
     border: 5px solid #1EA4CE;
     border-radius: 2px;
     background-color: white;
+}
+
+.productPart {
+    height: 255px;
     overflow: auto;
+}
+
+.totalPriceContainer {
+    @include flexBox(center,center);
+    width: 92px;
+    height: 51px;
+    border: 2px solid #1EA4CE;
+    margin-top: 5px;
+}
+
+.totalPrice {
+    color: #1EA4CE;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
