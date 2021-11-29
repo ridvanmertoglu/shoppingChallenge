@@ -15,6 +15,7 @@ const HomePage = () => {
 
   let defaultItems = Object.values(useSelector((state) => state.itemsReducer.items));
   let defaultCompanies = Object.values(useSelector((state) => state.companiesReducer.companies));
+  let defaultTags = Object.values(useSelector((state) => state.itemsReducer.tags));
   const basketContent = useSelector((state) => state.basketReducer.products);
   const basketTotalPrice = useSelector((state) => state.basketReducer.totalPrice);
   
@@ -28,23 +29,15 @@ const HomePage = () => {
   const [itemTags, setItemTags] = useState([]);
 
 
+ 
+
+
 
   useEffect(() => {
     if (defaultItems && defaultItems.length > 0 && !alreadySet) {
       setItems(defaultItems.filter((item) => item.itemType === "mug"));
       setAlreadySet(true);
     }
-
-    const tags = [];
-    defaultItems.forEach((item) => {
-      item.tags.forEach((tag) => {
-        if (!tags.includes(tag)) {
-          tags.push(tag);
-        }
-      })
-    })
-    setItemTags(tags);
-
   }, [defaultItems])
   
 
@@ -136,7 +129,7 @@ const HomePage = () => {
       <Col md={3} >
       <SortBox title="Sorting" handleClickSort={handleOnClickSort}/>
       <FilterBox title="Brands" handleClickSort={handleOnclickFilter} defaultData={defaultCompanies}/>
-      <FilterBox title="Tags" handleClickSort={handleOnclickTagFilter} defaultData={itemTags} tagFilter/>
+      <FilterBox title="Tags" handleClickSort={handleOnclickTagFilter} defaultData={defaultTags} tagFilter/>
       </Col>
       <Col md={6}>
       <Row>
@@ -157,13 +150,16 @@ const HomePage = () => {
         <ReactPaginate
           className={styles.pagination}
           breakLabel="..."
-          nextLabel="NEXT >"
+          nextLabel="Next>"
+          nextLinkClassName={styles.pageItem}
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="< PREV"
+          previousLabel="<Prev"
+          previousLinkClassName={styles.pageItem}
           renderOnZeroPageCount={null}
           pageClassName={styles.pageItem}
+          activeClassName={styles.activePage}
       />
       </Row>
       </Col>

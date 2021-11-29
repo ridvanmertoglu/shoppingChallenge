@@ -13,8 +13,18 @@ const App = () => {
 
   const fetchItems = async () => {
     try {
+      const tags = [];
       const { data } = await itemService.getItems();
+      data.forEach((item) => {
+        item.tags.forEach((tag) => {
+          if (!tags.includes(tag)) {
+            tags.push(tag);
+          }
+        })
+      })
       dispatch(itemsActions.setItems(data));
+      dispatch(itemsActions.setTags(tags));
+
     } catch (error) {
       console.log(error);
     }
@@ -33,6 +43,7 @@ const App = () => {
     fetchItems();
     fetchCompanies();
   }, [])
+
 
   return (
     <DefaultLayout>

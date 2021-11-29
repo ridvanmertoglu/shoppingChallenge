@@ -47,7 +47,7 @@ const FilterBox = ({title, handleClickSort, defaultData, tagFilter}) => {
         <div className={styles.checkboxContainer}>
           <input className={styles.checkbox}
             type="radio"  
-            name="filter"
+            name={title}
             id={tagFilter ? element : element.slug}  
             onChange={handleChange}  
           />
